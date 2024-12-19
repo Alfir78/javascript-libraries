@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ocean Pollution Awareness</title>
+    <!-- Include a third-party library: Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-size: 20px;
+            margin: 0;
+            padding: 0;
+            background-color: #e0f7fa;
+        }
+        header {
+            background: #0e79bc;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+        }
+        section {
+            padding: 20px;
+        }
+        canvas {
+            max-width: 100%;
+            height: auto;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Plastic Pollution in Oceans</h1>
+        <p>Understanding the problem and exploring solutions</p>
+    </header>
+
+    <section>
+        <h2>The Impact of Plastic on Marine Life</h2>
+        <p>
+            Plastic pollution in oceans harms marine life, disrupts ecosystems, and ultimately affects human well-being. 
+            The chart below shows the distribution of major sources of oceanic plastic waste.
+        </p>
+        <canvas id="plasticSourcesChart"></canvas>
+    </section>
+
+    <section>
+        <h2>Solutions to Combat Ocean Pollution</h2>
+        <p>
+            To mitigate the crisis, we can adopt these strategies:
+        </p>
+        <ul>
+            <li>Reducing single-use plastics</li>
+            <li>Promoting recycling and circular economies</li>
+            <li>Supporting clean-up initiatives</li>
+            <li>Advocating for policy changes</li>
+        </ul>
+        <p>
+            The pie chart below highlights the effectiveness of various solutions in reducing plastic pollution.
+        </p>
+        <canvas id="solutionEffectivenessChart"></canvas>
+    </section>
+
+    <script>
+        // Data for the first chart
+        const plasticSourcesData = {
+            labels: ["Fishing Gear", "Bottles", "Bags", "Microplastics", "Other"],
+            datasets: [{
+                data: [25, 20, 15, 30, 10],
+                backgroundColor: ["#4caf50", "#2196f3", "#ffeb3b", "#f44336", "#9c27b0"],
+            }]
+        };
+
+        // Data for the second chart
+        const solutionEffectivenessData = {
+            labels: ["Policy Enforcement", "Cleanup Efforts", "Recycling", "Awareness Campaigns"],
+            datasets: [{
+                data: [40, 30, 20, 10],
+                backgroundColor: ["#009688", "#8bc34a", "#03a9f4", "#ffc107"],
+            }]
+        };
+
+        // Configuration and rendering for the first chart
+        const ctx1 = document.getElementById('plasticSourcesChart').getContext('2d');
+        new Chart(ctx1, {
+            type: 'doughnut',
+            data: plasticSourcesData,
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Sources of Oceanic Plastic Waste'
+                    }
+                }
+            }
+        });
+
+        // Configuration and rendering for the second chart
+        const ctx2 = document.getElementById('solutionEffectivenessChart').getContext('2d');
+        new Chart(ctx2, {
+            type: 'pie',
+            data: solutionEffectivenessData,
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Effectiveness of Solutions'
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
